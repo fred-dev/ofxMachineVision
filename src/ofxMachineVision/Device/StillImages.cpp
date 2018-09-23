@@ -1,6 +1,11 @@
 #include "StillImages.h"
 #include "ofSystemUtils.h"
 #include "ofImage.h"
+#include "ofPixels.h"
+
+#ifndef CLAMP
+#define CLAMP(val,min,max) ((val) < (min) ? (min) : ((val > max) ? (max) : (val)))
+#endif
 
 namespace ofxMachineVision {
 	namespace Device {
