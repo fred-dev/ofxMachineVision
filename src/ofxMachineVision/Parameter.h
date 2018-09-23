@@ -2,6 +2,7 @@
 
 #include "ofParameter.h"
 
+using namespace std;
 namespace ofxMachineVision {
 	class AbstractParameter {
 	public:
