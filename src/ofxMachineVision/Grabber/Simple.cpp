@@ -33,7 +33,6 @@ namespace ofxMachineVision {
 
 		//----------
 		bool Simple::open(shared_ptr<Device::Base::InitialisationSettings> initialisationSettings) {
-			this->close();
 
 			if (!this->getIsDeviceExists()) {
 				OFXMV_ERROR << "Cannot open device. Grabber has no Device";
@@ -42,6 +41,12 @@ namespace ofxMachineVision {
 
 			//if no settings are set, then use defaults
 			if (initialisationSettings == nullptr) {
+				initialisationSettings = this->getDevice()->getDefaultSettings();
+				OFXMV_NOTICE << "Setting default device settings";
+			}
+			else
+			{
+				this->close();
 				initialisationSettings = this->getDevice()->getDefaultSettings();
 			}
 
